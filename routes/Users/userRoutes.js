@@ -10,6 +10,12 @@ router.get('/', function (req, res, next) {
 router.get('/logged', (req, res) => {
   res.send('success');
 });
+router.get('/login',(req,res,next)=>{
+  res.render('login')
+})
+router.get('/register',(req,res,next)=>{
+  res.render('register')
+})
 router.post('/register', async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
