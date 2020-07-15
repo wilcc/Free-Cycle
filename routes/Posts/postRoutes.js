@@ -19,4 +19,9 @@ router.get('/get-all',(req,res,next)=>{
         res.json({foundpost})
     })
 })
+router.get('/single-post/:id',(req,res,next)=>{
+    Post.find({_id: req.params.id}).then((foundpost)=>{
+        res.json({message:foundpost})
+    })
+})
 module.exports = router
