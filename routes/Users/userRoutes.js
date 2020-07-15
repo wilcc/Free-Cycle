@@ -26,9 +26,22 @@ router.post('/register', register);
 router.post(
   '/login',
   passport.authenticate('local-login', {
-    successRedirect: '/api/users/logged',
+    successRedirect: '/api/posts/get-all',
     failureRedirect: '/api/users/login',
     failureFlash: true,
   })
 );
+router.get('/logout', (req, res) => {
+  // req.logout();
+  res.clearCookie('connect.sid', {
+    path: '/',
+    httpOnly: true,
+    secure: false,
+    maxAge: null
+  });
+  req.session.destroy();
+  // console.log('cookie', req.session);
+
+  return res.redirect('/api/users/login');
+});
 module.exports = router;
