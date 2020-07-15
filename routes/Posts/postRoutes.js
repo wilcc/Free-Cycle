@@ -11,17 +11,24 @@ router.post('/create-new',(req,res,next)=>{
     post.text = req.body.text
     post.image = req.body.image
     post.save().then((savedPost)=>{
-        res.json({savedPost})
+        res.redirect(`/api/posts/single-post/${savedPost._id}`)
     }).catch((err)=>{next(err)})
 }) 
 router.get('/get-all',(req,res,next)=>{
-    Post.find().then((foundpost)=>{
-        res.json({foundpost})
+    Post.find().then((foundPost)=>{
+        res.render('allPost',{foundPost})
     })
 })
+
 router.get('/single-post/:id',(req,res,next)=>{
-    Post.find({_id: req.params.id}).then((foundpost)=>{
-        res.json({message:foundpost})
+    Post.find({_id: req.params.id}).then((foundPost)=>{
+        res.json({message:foundPost})
     })
+})
+
+
+
+router.get('/test',(req,res)=>{
+    res.render('allPost')
 })
 module.exports = router

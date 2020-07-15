@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Project For Code Immersives</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="container cta-100">
+      <div class="container">
+        <div class="row blog">
+          <div class="col-md-12">
+            <div
+              id="blogCarousel"
+              class="carousel slide container-blog"
+              data-ride="carousel"
+            >
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#blogCarousel"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#blogCarousel" data-slide-to="1"></li>
+              </ol>
+              
+              <!-- Carousel items -->
+              <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <div class="row">
+                        <% for( let i = 0; i < foundPost.length; i++ ) { %>
+                            <% console.log(foundPost) %> 
+                            <div class="col-md-4">
+                                <div class="item-box-blog">
+                                    <div class="item-box-blog-image">
+                                        <!--Date-->
+                                        <div class="item-box-blog-date bg-blue-ui white">
+                                            <span class="mon"><%= foundPost[i].timestamp %> </span>
+        
+                                        </div>
+                                        <!--Image-->
+                                        <figure>
+                                            <img
+                                            alt=""
+                                            src="<%= foundPost[i].image %> "
+                                            />
+                                        </figure>
+                                    </div>
+                                    <div class="item-box-blog-body">
+                                        <!--Heading-->
+                                        <div class="item-box-blog-heading">
+                                            <a href="#" tabindex="0">
+                                                <h5>Title</h5>
+                                            </a>
+                                        </div>
+                                        <!--Data-->
+                                        <div
+                                        class="item-box-blog-data"
+                                        style="padding: px 15px;"
+                                        >
+                                        <p>
+                                            <i class="fa fa-user-o"></i> Admin,
+                                            <i class="fa fa-comments-o"></i> Comments(3)
+                                        </p>
+                                    </div>
+                                    <!--Text-->
+                                    <div class="item-box-blog-text">
+                                        <p>
+                                            <%= foundPost[i].text %> 
+                                        </p>
+                                    </div>
+                                    <div class="mt">
+                                        <a
+                                        href="#"
+                                        tabindex="0"
+                                        class="btn bg-blue-ui white read"
+                                        >read more</a
+                                        >
+                                    </div>
+                                    <!--Read More Button-->
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                        
+                  <!--.row-->
+                </div>
+                <!--.item-->
+              </div>
+              <!--.carousel-inner-->
+            </div>
+            <!--.Carousel-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
