@@ -16,13 +16,13 @@ router.post('/create-new',(req,res,next)=>{
 }) 
 router.get('/get-all',(req,res,next)=>{
     Post.find().then((foundPost)=>{
-        res.render('allPost',{foundPost})
+        res.render('main/allPost',{foundPost})
     })
 })
 
 router.get('/single-post/:id',(req,res,next)=>{
     Post.find({_id: req.params.id}).then((foundPost)=>{
-        res.json({message:foundPost})
+        res.render('main/singlePost',{foundPost})
     })
 })
 
