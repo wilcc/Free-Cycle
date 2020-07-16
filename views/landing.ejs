@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Free Cycle</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>body
+        {
+            background: url(https://i.pinimg.com/originals/e2/9c/59/e29c5931347c37fd1c6a8fe4b25560be.jpg);
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;  
+            background-attachment: fixed; 
+            background-size: 100% 100%;
+        }
+        
+        .btn_text
+        {
+            margin-top: 300px;
+            overflow-x: hidden;
+            border: 0;
+            border-radius: 0 !important;
+            background: #000;
+        }
+        
+        .btn_text:hover
+        {
+           
+            background: #000;
+        }
+        
+        
+        .btn_text span
+        {
+            display: inline-block;
+            transition: 0.5s;
+            text-transform: uppercase;
+            color:#fff;
+            font-size: 26px;
+        }
+        
+        .btn_text span:nth-child(odd):before
+        {
+           content: attr(data-text);
+            position: absolute;
+            transform: translateY(100%);
+        }
+        
+        .btn_text span:nth-child(odd)
+        {
+            transform: translateY(-100%);
+        }
+        
+        .btn_text:hover span:nth-child(odd)
+        {
+            transform: translateY(0);
+        }
+        
+        .btn_text span:nth-child(even):before
+        {
+           content: attr(data-text);
+            position: absolute;
+            transform: translateY(-100%);
+        }
+        
+        .btn_text span:nth-child(even)
+        {
+            transform: translateY(100%);
+        }
+        
+        .btn_text:hover span:nth-child(even)
+        {
+            transform: translateY(0);
+        }</style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+            <a href="/api/posts/get-all">
+          <button class="btn btn-default btn_text">
+            <span data-text="E">e</span>
+            <span data-text="X">x</span>
+            <span data-text="P">p</span>
+            <span data-text="L">l</span>
+            <span data-text="O">o</span>
+            <span data-text="R">r</span>
+            <span data-text="E">e</span>
+          </button>
+        </a>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
