@@ -13,7 +13,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      
+
       <a class="navbar-brand" href="#">Login dropdown</a>
     </div>
 
@@ -44,8 +44,7 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <% if (!user) { %>
-       
-        
+
       <ul class="nav navbar-nav navbar-right">
         <li><p class="navbar-text">Already have an account?</p></li>
         <li class="dropdown">
@@ -109,8 +108,7 @@
             </li>
           </ul>
           <% } else {%>
-      <ul class="nav navbar-nav navbar-right">
-
+          <ul class="nav navbar-nav navbar-right">
             <span class="navbar-text">
               Hello &nbsp;
               <a href="/api/users/profile">
@@ -118,12 +116,12 @@
               </a>
               &nbsp;|&nbsp;
             </span>
-        
+
             <span class="nav navbar-nav navbar-text"
               ><a href="/api/users/logout">Logout</a></span
             >
           </ul>
-            <% } %>
+          <% } %>
         </li>
       </ul>
     </div>
