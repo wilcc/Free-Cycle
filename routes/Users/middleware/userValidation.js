@@ -21,5 +21,11 @@ const verifyLogin = (req, res, next) => {
     next();
   }
 };
-
-module.exports = { registerValidation, loginValidation, verifyLogin };
+const checkPassword = [
+  check('oldPassword', 'Please Include a valid password').isLength({ min: 6 }),
+  check('newPassword', 'Please Include a valid password').isLength({ min: 6 }),
+  check('repeatNewPassword', 'Please Include a valid password').isLength({
+    min: 6
+  })
+];
+module.exports = { registerValidation, loginValidation, verifyLogin,checkPassword };

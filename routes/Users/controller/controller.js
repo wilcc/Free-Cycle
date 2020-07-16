@@ -78,5 +78,15 @@ module.exports = {
           console.log('Server Error'), reject(err);
         });
     });
+  },
+  logout: (req, res) => {
+    res.clearCookie('connect.sid', {
+      path: '/',
+      httpOnly: true,
+      secure: false,
+      maxAge: null
+    });
+    req.session.destroy();
+    return res.redirect('/api/users/login');
   }
 };
