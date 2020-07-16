@@ -4,7 +4,10 @@ const Post = require('./models/Post')
 
 
 router.get('/create-new',(req,res)=>{
-    res.render('createNewPost')
+    if(req.isAuthenticated()){
+        res.render('createNewPost')
+    }
+    res.send('unauthorized')
 })
 router.post('/create-new',(req,res,next)=>{
     const post = new Post()
@@ -21,12 +24,13 @@ router.get('/get-all',(req,res,next)=>{
 })
 
 router.get('/single-post/:id',(req,res,next)=>{
-    Post.find({_id: req.params.id}).then((foundPost)=>{
-        res.render('main/singlePost',{foundPost})
-    })
+    if(req.isAuthenticated()){
+        Post.find({_id: req.params.id}).then((foundPost)=>{
+            res.render('main/singlePost',{foundPost})
+        })
+    }
+    res.send('unauthorized')
 })
-
-
 
 router.get('/test',(req,res)=>{
     res.render('allPost')

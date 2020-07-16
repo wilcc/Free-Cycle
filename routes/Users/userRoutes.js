@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const User = require('./models/User');
 const passport = require('passport');
 const {
   registerValidation,
@@ -13,20 +12,29 @@ const { validationResult } = require('express-validator');
 const { register,updateProfile,updatePassword,logout } = require('./controller/controller');
 
 /* GET users listing. */
-router.get('/', function (req, res, next) {
+router.get('/', function (req, res) {
   res.send('respond with a resource');
 });
 
 router.get('/logged', (req, res) => {
-  res.redirect('api/posts/get-all');
+  if (req.isAuthenticated()) {
+    res.redirect('api/posts/get-all');
+  }
+  return res.redirect('/');
 });
 
-router.get('/login', (req, res, next) => {
-  res.render('login');
+router.get('/login', (req, res) => {
+  if (req.isAuthenticated()) {
+    return res.redirect('/');
+  }
+  return res.render('login');
 });
 
-router.get('/register', (req, res, next) => {
-  res.render('register');
+router.get('/register', (req, res) => {
+  if (req.isAuthenticated()) {
+    return res.redirect('/');
+  }
+  return res.render('register');
 });
 
 router.post('/register', registerValidation, register);
@@ -41,8 +49,12 @@ router.post(
   })
 );
 router.get('/logout', logout);
+
 router.get('/update-profile', (req, res) => {
-  return res.render('update-profile');
+  if (req.isAuthenticated()) {
+    return res.render('update-profile');
+  }
+  return res.send('Unauthorized');
 });
 
 router.get('/profile', (req, res, next) => {
