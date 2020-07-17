@@ -13,7 +13,7 @@ const { register,updateProfile,updatePassword,logout } = require('./controller/c
 
 /* GET users listing. */
 router.get('/', function (req, res) {
-  res.send('respond with a resource');
+  return res.send('respond with a resource');
 });
 
 router.get('/logged', (req, res) => {

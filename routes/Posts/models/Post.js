@@ -4,8 +4,10 @@ const Schema = mongoose.Schema
 
 const PostSchema = new Schema({
     owner: {type: Schema.Types.ObjectId, ref: 'User'},
-    text: String,
-    image: String,
+    title:{type:String,required:true},
+    text: {type: String,required:true},
+    image: [],
+    category: {type: String,required:true},
     timestamp: {
         type: String,
         default: () => moment().format('MMMM Do YYYY, h:mm:ss a'),

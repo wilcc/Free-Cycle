@@ -14,7 +14,7 @@ module.exports = {
         if (err) {
           return res.status(400).json({ confirmation: false, message: err });
         } else {
-          res.redirect(301, '/api/posts/get-all');
+          return res.redirect(301, '/api/posts/get-all');
         }
       });
     } catch (error) {

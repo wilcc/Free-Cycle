@@ -1,44 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Project For Code Immersives</title>
+  <head>
+    <title>Create New Post</title>
+    <% include ./partials/head %>
+    <link rel="stylesheet" href="/stylesheets/createpost.css" />
+  </head>
 
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link rel="stylesheet" href="./stylesheets/loginStyle.css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <body>
+    <% include ./partials/newnavbar %>
+    <section class="get-in-touch">
+      <h1 class="title">Create New Post</h1>
+      <form class="contact-form row">
+        <div class="form-field col-lg-6">
+          <input
+            id="title"
+            class="input-text js-input"
+            name="title"
+            type="text"
+            required
+          />
+          <label class="label" for="title">Title</label>
+        </div>
+        <div class="form-field col-lg-6">
+          <select id="phone" class="input-text js-input" type="text" required>
+            <option selected>Select a Category</option>
+            <option value="toy">Toy</option>
+            <option value="furniture">Furniture</option>
+            <option value="plants">Plants</option>
+          </select>
+        </div>
+        <div class="form-field col-lg-12">
+          <input
+            id="category"
+            class="input-text js-input"
+            type="text"
+            name="category"
+            required
+          />
+          <label class="label" for="category">Image</label>
+        </div>
+        <div class="form-field col-lg-12">
+          <input
+            id="message"
+            class="input-text js-input"
+            type="text"
+            required
+          />
+          <label class="label" for="message">Message</label>
+        </div>
+        <div class="form-field col-lg-12">
+          <input class="submit-btn" type="submit" value="Submit" />
+        </div>
+      </form>
+    </section>
 
-</head>
-
-<body>
-
-    <div id="fullscreen_bg" class="fullscreen_bg"/>
-    
-    <div class="container">
-    
-        <form class="form-create-post" action="/api/posts/create-new" method="POST">
-            <h1 class="form-signin-heading text-muted">Create New Post</h1>
-            <% if(success.length>0) {%>
-                <span style="color:green">
-                <%=success%> <%}%></span>
-            
-                <% if (errors.length>0) { %>
-                    <span style="color:red">
-                    <%=errors %> 
-                    <% } %></span>
-            <input type="text" id="text" class="form-control" placeholder="Enter Your Text" name = "text" required="" autofocus="">
-            <input type="text" id="image" class="form-control" placeholder="image" name = "image">
-            <button class="btn btn-lg btn-primary btn-block" type="submit">
-                Post
-            </button>
-
-        </form>
-
-    </div>
-
-
-
-</body>
-
-
+    <% include ./partials/scripts %>
+  </body>
 </html>
