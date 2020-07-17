@@ -3,11 +3,11 @@ const moment = require('moment')
 const Schema = mongoose.Schema
 
 const PostSchema = new Schema({
-    owner: {type: Schema.Types.ObjectId, ref: 'User'},
+    owner: {type: Schema.Types.ObjectId, ref: 'user'},
     title:{type:String,required:true},
     text: {type: String,required:true},
     image: [],
-    category: {type: String,required:true},
+    category: {type: String},
     timestamp: {
         type: String,
         default: () => moment().format('MMMM Do YYYY, h:mm:ss a'),

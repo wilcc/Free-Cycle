@@ -10,7 +10,7 @@
     <% include ./partials/newnavbar %>
     <section class="get-in-touch">
       <h1 class="title">Create New Post</h1>
-      <form class="contact-form row">
+      <form action="/api/posts/create-new" method="POST" class="contact-form row">
         <div class="form-field col-lg-6">
           <input
             id="title"
@@ -22,7 +22,7 @@
           <label class="label" for="title">Title</label>
         </div>
         <div class="form-field col-lg-6">
-          <select id="phone" class="input-text js-input" type="text" required>
+          <select id="category" class="input-text js-input" type="text" name="category" required>
             <option selected>Select a Category</option>
             <option value="toy">Toy</option>
             <option value="furniture">Furniture</option>
@@ -31,22 +31,22 @@
         </div>
         <div class="form-field col-lg-12">
           <input
-            id="category"
+            id="image"
             class="input-text js-input"
             type="text"
-            name="category"
-            required
+            name="image"
           />
           <label class="label" for="category">Image</label>
         </div>
         <div class="form-field col-lg-12">
           <input
-            id="message"
+            id="text"
             class="input-text js-input"
             type="text"
+            name="text"
             required
           />
-          <label class="label" for="message">Message</label>
+          <label class="label" for="text">Message</label>
         </div>
         <div class="form-field col-lg-12">
           <input class="submit-btn" type="submit" value="Submit" />

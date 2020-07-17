@@ -54,7 +54,7 @@
                                         <!--Heading-->
                                         <div class="item-box-blog-heading">
                                             <a href="#" tabindex="0">
-                                                <h5>Title</h5>
+                                                <h5><%= foundPost[i].title %> </h5>
                                             </a>
                                         </div>
                                         <!--Data-->
@@ -63,7 +63,7 @@
                                         style="padding: px 15px;"
                                         >
                                         <p>
-                                            <i class="fa fa-user-o"></i> Admin,
+                                            <i class="fa fa-user-o"></i> <%= foundPost[i].owner.profile.name%> 
                                             <i class="fa fa-comments-o"></i> Comments(3)
                                         </p>
                                     </div>
