@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const Posts = require('./routes/Posts/models/Post')
 const Seed = require('./seed.json')
+const Users = require('./routes/Users/models/User')
+const UserSeed = require('./userSeed.json')
 
 
 require('dotenv').config()
@@ -9,6 +11,7 @@ require('dotenv').config()
 
 const seedFunc = async() => {
     try{
+        const userData = await Users.create(UserSeed)
         const data = await Posts.create(Seed)
         console.log(`${data.length} records created`)
         await mongoose.disconnect()

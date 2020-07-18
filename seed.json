@@ -1,6 +1,6 @@
 [
   {
-    "owner": "5f107ee9bb5bacf2b5c15d84",
+    "owner": "5f1257d2a6055b1388bf8629",
     "title": "Title Number One",
     "category": "toy",
     "text": "Free Item",
@@ -8,8 +8,7 @@
     "timestamp": "July 02 2020"
   },
   {
-    "owner": "5f107ee9bb5bacf2b5c15d84",
-
+    "owner": "5f1257d2a6055b1388bf8629",
     "title": "Title Number Two",
     "category": "toy",
     "text": "Test this post",
@@ -17,7 +16,7 @@
     "timestamp": "July 02 2020"
   },
   {
-    "owner": "5f107ee9bb5bacf2b5c15d84",
+    "owner": "5f1257d2a6055b1388bf8629",
 
     "title": "I don't know anymore",
     "category": "toy",
@@ -26,7 +25,7 @@
     "timestamp": "July 02 2020"
   },
   {
-    "owner": "5f107ee9bb5bacf2b5c15d84",
+    "owner": "5f1257d2a6055b1388bf8629",
 
     "title": "Random Title",
     "category": "plants",
@@ -35,7 +34,7 @@
     "timestamp": "July 02 2020"
   },
   {
-    "owner": "5f107ee9bb5bacf2b5c15d84",
+    "owner": "5f1257d2a6055b1388bf8629",
 
     "title": "I really dont understand",
     "category": "plants",
@@ -44,7 +43,7 @@
     "timestamp": "July 02 2020"
   },
   {
-    "owner": "5f107ee9bb5bacf2b5c15d84",
+    "owner": "5f1257d2a6055b1388bf8629",
 
     "title": "This isnt what it seems",
     "category": "plants",
@@ -53,7 +52,7 @@
     "timestamp": "July 02 2020"
   },
   {
-    "owner": "5f107ee9bb5bacf2b5c15d84",
+    "owner": "5f1257d2a6055b1388bf8629",
 
     "title": "Title Number Threee",
     "category": "plants",
@@ -62,7 +61,7 @@
     "timestamp": "July 02 2020"
   },
   {
-    "owner": "5f107ee9bb5bacf2b5c15d84",
+    "owner": "5f1257d2a6055b1388bf8629",
     "title": "Adults Only",
     "category": "plants",
     "text": "Turpis egestas sed tempus urna et pharetra pharetra massa massa. Pulvinar sapien et ligula ullamcorper malesuada. Quam nulla porttitor massa id. Neque gravida in fermentum et sollicitudin ac orci phasellus egestas. Egestas sed tempus urna et. Posuere urna nec tincidunt praesent semper feugiat. Nisl rhoncus mattis rhoncus urna neque viverra justo. Viverra orci sagittis eu volutpat. Nisi quis eleifend quam adipiscing vitae proin sagittis nisl rhoncus. Sed cras ornare arcu dui vivamus. Posuere morbi leo urna molestie at elementum eu facilisis sed.",
@@ -70,14 +69,7 @@
     "timestamp": "July 02 2020"
   },
   {
-    "owner": {
-      "profile": { "name": "yi1", "picture": "" },
-      "address": "this is my new address",
-      "_id": "5f107ee9bb5bacf2b5c15d84",
-      "email": "yi1@me.com",
-      "password": "$2a$10$/oBjIGqo9ZqkDqVe7wLr3Obz/yEhMRHU2Et0nqpHJw6xpLcl8u762",
-      "timestamp": "July 16th 2020, 12:23:05 pm"
-    },
+    "owner": "5f1257d2a6055b1388bf8629",
     "title": "Hahahahahahaha",
     "category": "furniture",
     "text": "Turpis egestas sed tempus urna et pharetra pharetra massa massa. Pulvinar sapien et ligula ullamcorper malesuada. Quam nulla porttitor massa id. Neque gravida in fermentum et sollicitudin ac orci phasellus egestas. Egestas sed tempus urna et. Posuere urna nec tincidunt praesent semper feugiat. Nisl rhoncus mattis rhoncus urna neque viverra justo. Viverra orci sagittis eu volutpat. Nisi quis eleifend quam adipiscing vitae proin sagittis nisl rhoncus. Sed cras ornare arcu dui vivamus. Posuere morbi leo urna molestie at elementum eu facilisis sed.",
