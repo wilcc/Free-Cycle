@@ -11,7 +11,7 @@ require('dotenv').config()
 
 const seedFunc = async() => {
     try{
-        const userData = await Users.create(UserSeed)
+        await Users.create(UserSeed)
         const data = await Posts.create(Seed)
         console.log(`${data.length} records created`)
         await mongoose.disconnect()
