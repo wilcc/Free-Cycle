@@ -48,7 +48,13 @@ router.get('/single-post/:id', (req, res, next) => {
       return res.send('unauthorized');
   }
 });
-
+router.get('/get-category/:category',(req,res,next)=>{
+  if(req.isAuthenticated()){
+    Post.find({category: req.params.category}).populate('owner').exec((err,foundPost)=>{
+      if(err){return next(err)}else{return res.render('main/allPost',{foundPost})}
+    })
+  }
+})
 router.get('/test', (req, res) => {
   return res.render('allPost');
 });
