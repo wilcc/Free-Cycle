@@ -24,6 +24,11 @@
         <div class="form-field col-lg-6">
           <select id="category" class="input-text js-input" type="text" name="category" required>
             <option selected>Select a Category</option>
+
+            <% for( let i = 0; i < categories.length; i++ ) { %>
+              <option value="<%= categories[i].name %> "><%= categories[i].name %> </option>
+            
+            <% } %>
             <option value="toy">Toy</option>
             <option value="furniture">Furniture</option>
             <option value="plants">Plants</option>

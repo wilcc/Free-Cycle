@@ -1,5 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <title>Registration</title>
+
+                <% include ./partials/head %> 
+                <link rel="stylesheet" href="/stylesheets/createpost.css" />
+            
+            
+            </head>
+<body>
+    <% include ./partials/newnavbar %> 
+    <section class="get-in-touch">
+        <h1 class="title">Register</h1>
+
+        <% if(success.length>0) {%>
+            <span style="color:green">
+            <%=success%> <%}%></span>
+        
+            <% if (errors.length>0) { %>
+                <span style="color:red">
+                <%=errors %> 
+                <% } %></span>
+                <h2>
+                  Update Profile:
+                </h2>
+
+
+                <img
+                  class="profile-imageholder"
+                  src="/images/profile-imageholder.png"
+                />
+        <form action="/api/users/update-profile" method="POST" class="contact-form row">
+            <div class="form-field col-lg-12">
+                <input
+                  id="name"
+                  class="input-text js-input"
+                  name="name"
+                  type="text"
+                  value="<%=user.profile.name%>"
+                  required
+                />
+                <label class="label" for="name">Name</label>
+              </div>
+          <div class="form-field col-lg-12">
+            <input
+              id="email"
+              class="input-text js-input"
+              name="email"
+              type="email"
+              value="<%= user.email %> "
+              required
+            />
+            <label class="label" for="email">Email Address</label>
+          </div>
+          <div class="form-field col-lg-12">
+            <input
+              id="address"
+              class="input-text js-input"
+              type="text"
+              name="address"
+              value="<%= user.address %> "
+            />
+            <label class="label" for="address">Address</label>
+          </div>
+          
+
+
+          <div class="form-field col-lg-12">
+            <input class="submit-btn" type="submit" value="Submit" />
+          </div>
+        </form>
+      </section>
+      <section>
+
+        <form action="/api/users/update-password" method="POST" class="contact-form row">
+          <div class="form-field col-lg-12">
+              <input
+                id="oldPassword"
+                class="input-text js-input"
+                name="oldPassword"
+                type="password"
+                required
+              />
+              <label class="label" for="password">Old Password</label>
+            </div>
+        <div class="form-field col-lg-12">
+          <input
+            id="newPassword"
+            class="input-text js-input"
+            name="newPassword"
+            type="password"
+            required
+          />
+          <label class="label" for="password">New Password</label>
+        </div>
+        <div class="form-field col-lg-12">
+          <input
+            id="repeatNewPassword"
+            class="input-text js-input"
+            type="password"
+            name="repeatNewPassword"
+          />
+          <label class="label" for="password">New Password</label>
+        </div>
+        
+
+        
+        <div class="form-field col-lg-12">
+          <input class="submit-btn" type="submit" value="Submit" />
+        </div>
+      </form>
+      </section>
+      
+    
+
+<% include ./partials/scripts %> 
+</body>
+
+
+</html>
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <% include ./partials/head %>
 
