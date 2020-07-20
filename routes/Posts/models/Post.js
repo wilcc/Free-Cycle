@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 
 const PostSchema = new Schema({
     owner: {type: Schema.Types.ObjectId, ref: 'user'},
+    comments:[{type: Schema.Types.ObjectId, ref: 'comment'}],
     title:{type:String,required:true},
     text: {type: String,required:true},
     image: [],

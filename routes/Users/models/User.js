@@ -10,6 +10,7 @@ const UserSchema = new mongoose.Schema({
       picture: { type: String, default: '' },
     },
     address: { type: String, default: '(Please Update Address)' },
+    comment:[{type: mongoose.Schema.Types.ObjectId, ref: 'comment'}],
     timestamp: {
       type: String,
       default: () => moment().format('MMMM Do YYYY, h:mm:ss a'),

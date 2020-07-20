@@ -58,10 +58,9 @@
         </a>
       </div>
       <p>
-        <% console.log(foundPost) %> <%= foundPost[0].text %>
+        <%= foundPost[0].text %>
       </p>
-      <!-- <h4>Advances all 4 slides each time</h4> -->
-      <a href="https://www.codeply.com/go/HDu8lT7NxJ">also see</a>
+
       <div class="container">
         <h2 class="text-center">Comments</h2>
 
@@ -162,9 +161,16 @@
           <div class="col-md-6">
             <div class="widget-area no-padding blank">
               <div class="status-upload">
-                <form>
+                <form
+                  action="/api/comments/add-comment/<%= foundPost[0]._id %> "
+                  method="Post"
+                >
                   <textarea
                     placeholder="What are you doing right now?"
+                    id="comment"
+                    name="comment"
+                    type="text"
+                    required
                   ></textarea>
                   <ul>
                     <li>
