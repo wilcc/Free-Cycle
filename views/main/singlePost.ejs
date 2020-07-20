@@ -1,45 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <% include ../partials/head %> 
-        <title>Project For Code Immersives</title>
-        
-    </head>
-    <body>
-        <% include ../partials/newnavbar %> 
-        <div class="container text-center my-3">
-            <h3><%= foundPost[0].title %> </h3>
-            <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
-                <div class="carousel-inner w-100" role="listbox">
-                    <div class="carousel-item row no-gutters active">
-                        <% for( let i = 0; i < 4; i++ ) { %>
-                            <div class="col-3 float-left"><img class="img-fluid" src="<%= foundPost[0].image[i] %> "></div>
-                        <% } %>
-                    </div>
-                    <div class="carousel-item row no-gutters">
-                        <% for( let i = 4; i < foundPost[0].image.length; i++ ) { %>
-                            <div class="col-3 float-left"><img class="img-fluid" src="<%= foundPost[0].image[i] %> "></div>
-                        <% } %>
-                        <div class="col-3 float-left"><img class="img-fluid" src="http://placehold.it/350x280?text=5"></div>
-        
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#recipeCarousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+  <head>
+    <% include ../partials/head %>
+    <link rel="stylesheet" href="/stylesheets/commentBox.css" />
+    <title><%= foundPost[0].title %></title>
+    <script>
+      $(document).ready(function () {
+        $('[data-toggle=tooltip]').tooltip();
+      });
+    </script>
+  </head>
+  <body>
+    <% include ../partials/newnavbar %>
+    <div class="container text-center my-3">
+      <h3><%= foundPost[0].title %></h3>
+      <div
+        id="recipeCarousel"
+        class="carousel slide w-100"
+        data-ride="carousel"
+      >
+        <div class="carousel-inner w-100" role="listbox">
+          <div class="carousel-item row no-gutters active">
+            <% for( let i = 0; i < 4; i++ ) { %>
+            <div class="col-3 float-left">
+              <img class="img-fluid" src="<%= foundPost[0].image[i] %> " />
             </div>
-            <p>
-                <% console.log(foundPost) %> 
-                <%= foundPost[0].text %> 
-            </p>
-            <!-- <h4>Advances all 4 slides each time</h4> -->
-            <a href="https://www.codeply.com/go/HDu8lT7NxJ">also see</a>
+            <% } %>
+          </div>
+          <div class="carousel-item row no-gutters">
+            <% for( let i = 4; i < foundPost[0].image.length; i++ ) { %>
+            <div class="col-3 float-left">
+              <img class="img-fluid" src="<%= foundPost[0].image[i] %> " />
+            </div>
+            <% } %>
+            <div class="col-3 float-left">
+              <img class="img-fluid" src="http://placehold.it/350x280?text=5" />
+            </div>
+          </div>
         </div>
-        <% include ../partials/scripts %> 
-    </body>
+        <a
+          class="carousel-control-prev"
+          href="#recipeCarousel"
+          role="button"
+          data-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a
+          class="carousel-control-next"
+          href="#recipeCarousel"
+          role="button"
+          data-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      <p>
+        <% console.log(foundPost) %> <%= foundPost[0].text %>
+      </p>
+      <!-- <h4>Advances all 4 slides each time</h4> -->
+      <a href="https://www.codeply.com/go/HDu8lT7NxJ">also see</a>
+      <div class="container">
+        <h2 class="text-center">Comments</h2>
+
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-2">
+                <img
+                  src="https://image.ibb.co/jw55Ex/def_face.jpg"
+                  class="img img-rounded img-fluid"
+                />
+                <p class="text-secondary text-center">15 Minutes Ago</p>
+              </div>
+              <div class="col-md-10">
+                <p>
+                  <a
+                    class="float-left"
+                    href="https://maniruzzaman-akash.blogspot.com/p/contact.html"
+                    ><strong>Maniruzzaman Akash</strong></a
+                  >
+                  <span class="float-right"
+                    ><i class="text-warning fa fa-star"></i
+                  ></span>
+                  <span class="float-right"
+                    ><i class="text-warning fa fa-star"></i
+                  ></span>
+                  <span class="float-right"
+                    ><i class="text-warning fa fa-star"></i
+                  ></span>
+                  <span class="float-right"
+                    ><i class="text-warning fa fa-star"></i
+                  ></span>
+                </p>
+                <div class="clearfix"></div>
+                <p>
+                  Lorem Ipsum is simply dummy text of the pr make but also the
+                  leap into electronic typesetting, remaining essentially
+                  unchanged. It was popularised in the 1960s with the release of
+                  Letraset sheets containing Lorem Ipsum passages, and more
+                  recently with desktop publishing software like Aldus PageMaker
+                  including versions of Lorem Ipsum.
+                </p>
+                <p>
+                  <a class="float-right btn btn-outline-primary ml-2">
+                    <i class="fa fa-reply"></i> Reply</a
+                  >
+                  <a class="float-right btn text-white btn-danger">
+                    <i class="fa fa-heart"></i> Like</a
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="card card-inner">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-2">
+                    <img
+                      src="https://image.ibb.co/jw55Ex/def_face.jpg"
+                      class="img img-rounded img-fluid"
+                    />
+                    <p class="text-secondary text-center">15 Minutes Ago</p>
+                  </div>
+                  <div class="col-md-10">
+                    <p>
+                      <a
+                        href="https://maniruzzaman-akash.blogspot.com/p/contact.html"
+                        ><strong>Maniruzzaman Akash</strong></a
+                      >
+                    </p>
+                    <p>
+                      Lorem Ipsum is simply dummy text of the pr make but also
+                      the leap into electronic typesetting, remaining
+                      essentially unchanged. It was popularised in the 1960s
+                      with the release of Letraset sheets containing Lorem Ipsum
+                      passages, and more recently with desktop publishing
+                      software like Aldus PageMaker including versions of Lorem
+                      Ipsum.
+                    </p>
+                    <p>
+                      <a class="float-right btn btn-outline-primary ml-2">
+                        <i class="fa fa-reply"></i> Reply</a
+                      >
+                      <a class="float-right btn text-white btn-danger">
+                        <i class="fa fa-heart"></i> Like</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row"></div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="widget-area no-padding blank">
+              <div class="status-upload">
+                <form>
+                  <textarea
+                    placeholder="What are you doing right now?"
+                  ></textarea>
+                  <ul>
+                    <li>
+                      <a
+                        title=""
+                        data-toggle="tooltip"
+                        data-placement="bottom"
+                        data-original-title="Audio"
+                        ><i class="fa fa-music"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a
+                        title=""
+                        data-toggle="tooltip"
+                        data-placement="bottom"
+                        data-original-title="Video"
+                        ><i class="fa fa-video-camera"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a
+                        title=""
+                        data-toggle="tooltip"
+                        data-placement="bottom"
+                        data-original-title="Sound Record"
+                        ><i class="fa fa-microphone"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a
+                        title=""
+                        data-toggle="tooltip"
+                        data-placement="bottom"
+                        data-original-title="Picture"
+                        ><i class="fa fa-picture-o"></i
+                      ></a>
+                    </li>
+                  </ul>
+                  <button type="submit" class="btn btn-success green">
+                    <i class="fa fa-share"></i> Share
+                  </button>
+                </form>
+              </div>
+              <!-- Status Upload  -->
+            </div>
+            <!-- Widget Area -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <% include ../partials/scripts %>
+  </body>
 </html>
