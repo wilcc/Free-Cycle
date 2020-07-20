@@ -3,6 +3,8 @@ const Posts = require('./routes/Posts/models/Post')
 const Seed = require('./seed.json')
 const Users = require('./routes/Users/models/User')
 const UserSeed = require('./userSeed.json')
+const Category = require("./routes/Category/model/Category")
+const CategorySeed = require('./categorySeed.json')
 
 
 require('dotenv').config()
@@ -11,6 +13,7 @@ require('dotenv').config()
 
 const seedFunc = async() => {
     try{
+        await Category.create(CategorySeed)
         await Users.create(UserSeed)
         const data = await Posts.create(Seed)
         console.log(`${data.length} records created`)
