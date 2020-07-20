@@ -39,6 +39,7 @@ router.get('/single-post/:id', (req, res, next) => {
   if (req.isAuthenticated()) {
     Post.find({ _id: req.params.id })
       .populate('owner')
+      .populate('comments').populate('owner')
       .exec((err, foundPost) => {
       if (err) {return next(err)}else{
           return res.render('main/singlePost', { foundPost });

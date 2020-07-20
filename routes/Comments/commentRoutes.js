@@ -12,9 +12,9 @@ router.post('/add-comment/:id',(req,res,next)=>{
 
         const newComment = new Comment()
 
-        newComment.comment = req.body.comment
+        newComment.text = req.body.comment
         newComment.originalPost = foundPost._id
-        newComment.owner = req.user._id
+        newComment.owner = req.user.profile.name
 
         newComment.save().then((comment)=>{
             foundPost.comments.push(comment._id)
