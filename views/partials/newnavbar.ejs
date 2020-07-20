@@ -1,7 +1,7 @@
 
 
 <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
-  <a class="navbar-brand" href="#">Free-Cycle</a>
+  <a class="navbar-brand" href="/">Free-Cycle</a>
   <button
     class="navbar-toggler"
     type="button"
@@ -16,7 +16,7 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/"
+        <a class="nav-link" href="/api/posts/get-all"
           >Home <span class="sr-only">(current)</span></a
         >
       </li>
@@ -33,12 +33,10 @@
           >Categories</a
         >
         <ul class="dropdown-menu" aria-labelledby="dropdown2">
-          <li class="dropdown-item" href="#g"><a href="/api/posts/get-category/clothing">Clothing</a></li>
-          <li class="dropdown-item" href="#"><a href="/api/posts/get-category/equipments">Equipments</a></li>
-          <li class="dropdown-item" href="#"><a href="/api/posts/get-category/furniture">Furniture</a></li>
-          <li class="dropdown-item" href="#"><a href="/api/posts/get-category/plants">Plants</a></li>
-          <li class="dropdown-item" href="#"><a href="/api/posts/get-category/toys">Toys</a></li>
-          <li class="dropdown-item" href="#"><a href="/api/posts/get-category/others">Others</a></li>
+          <% for( let i = 0; i < categories.length; i++ ) { %>
+            <li class="dropdown-item" href="#"><a href="/api/posts/get-category/<%= categories[i].name %> "> <%= categories[i].name %> </a></li>
+            <% } %>
+
         </ul>
       </li>
       <li class="nav-item">

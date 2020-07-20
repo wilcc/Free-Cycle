@@ -12,6 +12,15 @@ const passport = require('passport');
 require('./lib/passport');
 require('dotenv').config();
 
+const getAllCategories = require('./routes/Category/middleware/getAllCategories');
+
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/Users/userRoutes');
+const postRouter = require('./routes/Posts/postRoutes')
+const commentRouter = require('./routes/Comments/commentRoutes')
+
+const app = express();
+
 mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
@@ -23,14 +32,6 @@ mongoose
   })
   .catch((err) => console.log(`Mongo err: ${err}`));
 
-
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/Users/userRoutes');
-const postRouter = require('./routes/Posts/postRoutes')
-const commentRouter = require('./routes/Comments/commentRoutes')
-
-const app = express();
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -41,7 +42,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.use(getAllCategories)
 app.use(
   session({
     resave: true,
