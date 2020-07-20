@@ -12,16 +12,16 @@
             <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
                 <div class="carousel-inner w-100" role="listbox">
                     <div class="carousel-item row no-gutters active">
-                        <div class="col-3 float-left"><img class="img-fluid" src="http://placehold.it/350x280/222/fff?text=1"></div>
-                        <div class="col-3 float-left"><img class="img-fluid" src="http://placehold.it/350x280/444?text=2"></div>
-                        <div class="col-3 float-left"><img class="img-fluid" src="http://placehold.it/350x280/888?text=3"></div>
-                        <div class="col-3 float-left"><img class="img-fluid" src="http://placehold.it/350x280/111/fff?text=4"></div>
+                        <% for( let i = 0; i < 4; i++ ) { %>
+                            <div class="col-3 float-left"><img class="img-fluid" src="<%= foundPost[0].image[i] %> "></div>
+                        <% } %>
                     </div>
                     <div class="carousel-item row no-gutters">
+                        <% for( let i = 4; i < foundPost[0].image.length; i++ ) { %>
+                            <div class="col-3 float-left"><img class="img-fluid" src="<%= foundPost[0].image[i] %> "></div>
+                        <% } %>
                         <div class="col-3 float-left"><img class="img-fluid" src="http://placehold.it/350x280?text=5"></div>
-                        <div class="col-3 float-left"><img class="img-fluid" src="http://placehold.it/350x280/555?text=6"></div>
-                        <div class="col-3 float-left"><img class="img-fluid" src="http://placehold.it/350x280/333/fff?text=7"></div>
-                        <div class="col-3 float-left"><img class="img-fluid" src="http://placehold.it/350x280/bbb?text=8"></div>
+        
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-slide="prev">

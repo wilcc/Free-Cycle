@@ -12,7 +12,7 @@
     "title": "Title Number Two",
     "category": "toys",
     "text": "Test this post",
-    "image": "/images/1.jpg",
+    "image": ["/images/1.jpg","/images/11.jpg","/images/12.jpg","/images/13.jpg","/images/14.jpg"],
     "timestamp": "July 02 2020"
   },
   {
