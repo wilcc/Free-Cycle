@@ -116,8 +116,6 @@ router.delete('/single-post/:id',(req,res,next)=>{
         return res.send(err)
       } return res.send('Post deleted')
     })
-
-
   }}).catch((err)=>{
     return console.log(err)
   })

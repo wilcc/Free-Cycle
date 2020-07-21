@@ -8,7 +8,7 @@ const PostSchema = new Schema({
     title:{type:String,required:true},
     text: {type: String,required:true},
     image: [],
-    category: {type: String},
+    category: {type: String,trim:true},
     timestamp: {
         type: String,
         default: () => moment().format('MMMM Do YYYY, h:mm:ss a'),

@@ -65,6 +65,7 @@
         class="btn bg-blue-ui white read"
         >Edit Post</a
       >
+      <% console.log(foundPost) %> 
       <form
         action = "/api/posts/single-post/<%= foundPost._id %>?_method=DELETE"
         method = "POST"
