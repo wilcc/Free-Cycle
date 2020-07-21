@@ -37,7 +37,7 @@ router.get('/get-all', (req, res, next) => {
 
 router.get('/single-post/:id', (req, res, next) => {
   if (req.isAuthenticated()) {
-    Post.find({ _id: req.params.id })
+    Post.findOne({ _id: req.params.id })
       .populate('owner')
       .populate('comments')
       .exec((err, foundPost) => {
