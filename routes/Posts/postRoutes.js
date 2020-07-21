@@ -10,13 +10,13 @@ router.get('/create-new', (req, res) => {
   return res.send('unauthorized');
 });
 router.post('/create-new', (req, res, next) => {
-    console.log(req)
+  console.log(req);
   const post = new Post();
   post.owner = req.user._id;
   post.text = req.body.text;
   post.image = req.body.image;
   post.category = req.body.category;
-  post.title = req.body.title
+  post.title = req.body.title;
   post
     .save()
     .then((savedPost) => {
@@ -39,24 +39,59 @@ router.get('/single-post/:id', (req, res, next) => {
   if (req.isAuthenticated()) {
     Post.find({ _id: req.params.id })
       .populate('owner')
-      .populate('comments').populate('owner')
+      .populate('comments')
       .exec((err, foundPost) => {
-      if (err) {return next(err)}else{
+        if (err) {
+          return next(err);
+        } else {
           return res.render('main/singlePost', { foundPost });
-      }
+        }
       });
-  }else{
-      return res.send('unauthorized');
+  } else {
+    return res.send('unauthorized');
   }
 });
-router.get('/get-category/:category',(req,res,next)=>{
-  if(req.isAuthenticated()){
-    Post.find({category: req.params.category}).populate('owner').exec((err,foundPost)=>{
-      if(err){return next(err)}else{return res.render('main/allPost',{foundPost})}
-    })
+router.get('/get-category/:category', (req, res, next) => {
+  if (req.isAuthenticated()) {
+    Post.find({ category: req.params.category })
+      .populate('owner')
+      .exec((err, foundPost) => {
+        if (err) {
+          return next(err);
+        } else {
+          return res.render('main/allPost', { foundPost });
+        }
+      });
   }
-})
+});
 router.get('/test', (req, res) => {
   return res.render('allPost');
+});
+router.get('/edit-post/:id', (req, res) => {
+  if (req.isAuthenticated()) {
+    Post.find({ _id: req.params.id }).then((foundPost) => {
+      res.render('editPost', { foundPost });
+    });
+  }
+});
+router.post('/edit-post/:id', (req, res, next) => {
+  if (!req.isAuthenticated()) {
+    return res.send('unauthorized');
+  } else {
+    Post.findOne({ _id: req.params.id })
+      .populate('owner')
+      .exec((err,foundPost) => {
+        if(err){
+          return next(err)
+        }
+          foundPost.text = req.body.text;
+          foundPost.title = req.body.title;
+          foundPost.category = req.body.category;
+          foundPost.save().then((post) => {
+            res.redirect(`/api/posts/single-post/${post._id}`);
+          });
+        }
+      );
+  }
 });
 module.exports = router;

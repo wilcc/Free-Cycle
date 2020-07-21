@@ -9,42 +9,37 @@
   <body>
     <% include ./partials/newnavbar %>
     <section class="get-in-touch">
-      <h1 class="title">Create New Post</h1>
-      <form action="/api/posts/create-new" method="POST" class="contact-form row">
+
+      <h1 class="title">Edit Post</h1>
+      <form action="/api/posts/edit-post/<%= foundPost[0]._id %> " method="POST" class="contact-form row">
         <div class="form-field col-lg-6">
           <input
             id="title"
             class="input-text js-input"
             name="title"
             type="text"
+            value="<%= foundPost[0].title %> "
             required
           />
           <label class="label" for="title">Title</label>
         </div>
         <div class="form-field col-lg-6">
           <select id="category" class="input-text js-input" type="text" name="category" required>
-            <option selected>Select a Category</option>
+            <option selected><%= foundPost[0].category %> </option>
 
             <% for( let i = 0; i < categories.length; i++ ) { %>
               <option value="<%= categories[i].name %> "><%= categories[i].name %> </option>
             <% } %>
           </select>
         </div>
-        <div class="form-field col-lg-12">
-          <input
-            id="image"
-            class="input-text js-input"
-            type="text"
-            name="image"
-          />
-          <label class="label" for="category">Image</label>
-        </div>
+        
         <div class="form-field col-lg-12">
           <input
             id="text"
             class="input-text js-input"
             type="text"
             name="text"
+            value="<%= foundPost[0].text %> "
             required
           />
           <label class="label" for="text">Message</label>
