@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Post = require('./models/Post');
 const User = require('../Users/models/User');
+const Comment = require('../Comments/model/Comments')
 
 router.get('/create-new', (req, res) => {
   if (req.isAuthenticated()) {
@@ -70,10 +71,8 @@ router.get('/test', (req, res) => {
 router.get('/edit-post/:id', (req, res) => {
   if (req.isAuthenticated()) {
     Post.findOne({ _id: req.params.id }).then((foundPost) => {
-      console.log(req.user._id)
-      console.log(foundPost.owner)
-      if(req.user._id === foundPost.owner){
-
+      if(JSON.stringify(req.user._id) === JSON.stringify(foundPost.owner)){
+        console.log('here')
         return res.render('editPost', { foundPost });
       }
       res.send('You not the owner')
@@ -100,4 +99,27 @@ router.put('/edit-post/:id', (req, res, next) => {
       );
   }
 });
+router.delete('/single-post/:id',(req,res,next)=>{
+  Post.findOne({_id:req.params.id}).then((foundPost)=>{
+    if(JSON.stringify(req.user._id)!==JSON.stringify(foundPost.owner)){
+      return res.send('only owner of the post can delete')
+    }else{
+        for(let i = 0; i < foundPost.comments.length;i++){
+          Comment.deleteOne({_id:foundPost.comments[i]},(err)=>{
+            if(err){
+              return res.send(err)
+            }
+          })
+        }
+    Post.deleteOne({_id:req.params.id},(err)=>{
+      if(err){
+        return res.send(err)
+      } return res.send('Post deleted')
+    })
+
+
+  }}).catch((err)=>{
+    return console.log(err)
+  })
+})
 module.exports = router;

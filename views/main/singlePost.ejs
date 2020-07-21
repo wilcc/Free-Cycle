@@ -65,6 +65,16 @@
         class="btn bg-blue-ui white read"
         >Edit Post</a
       >
+      <form
+        action = "/api/posts/single-post/<%= foundPost._id %>?_method=DELETE"
+        method = "POST"
+        tabindex="0"
+        >
+        <button type="submit">
+          Delete Post
+        </button>
+        </form
+      >
       <% if (foundPost.comments.length > 0) { %>
       <div class="container">
         <h2 class="text-center">Comments</h2>

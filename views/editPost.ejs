@@ -11,7 +11,7 @@
     <section class="get-in-touch">
       <h1 class="title">Edit Post</h1>
       <form
-        action="/api/posts/edit-post/<%= foundPost[0]._id %>?_method=PUT "
+        action="/api/posts/edit-post/<%= foundPost._id %>?_method=PUT "
         method="POST"
         class="contact-form row"
       >
@@ -21,7 +21,7 @@
             class="input-text js-input"
             name="title"
             type="text"
-            value="<%= foundPost[0].title %> "
+            value="<%= foundPost.title %> "
             required
           />
           <label class="label" for="title">Title</label>
@@ -34,7 +34,7 @@
             name="category"
             required
           >
-            <option selected><%= foundPost[0].category %> </option>
+            <option selected><%= foundPost.category %> </option>
 
             <% for( let i = 0; i < categories.length; i++ ) { %>
             <option value="<%= categories[i].name %> "
@@ -50,7 +50,7 @@
             class="input-text js-input"
             type="text"
             name="text"
-            value="<%= foundPost[0].text %> "
+            value="<%= foundPost.text %> "
             required
           />
           <label class="label" for="text">Message</label>
