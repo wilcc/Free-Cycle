@@ -8,7 +8,7 @@ const session = require('express-session');
 let MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
 const passport = require('passport');
-
+const methodOverride = require('method-override');
 require('./lib/passport');
 require('dotenv').config();
 
@@ -41,7 +41,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(methodOverride('_method'))
 app.use(getAllCategories)
 app.use(
   session({

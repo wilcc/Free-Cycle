@@ -11,7 +11,7 @@
     <section class="get-in-touch">
 
       <h1 class="title">Edit Post</h1>
-      <form action="/api/posts/edit-post/<%= foundPost[0]._id %> " method="POST" class="contact-form row">
+      <form action="/api/posts/edit-post/<%= foundPost[0]._id %>?_method=PUT " method="POST" class="contact-form row">
         <div class="form-field col-lg-6">
           <input
             id="title"

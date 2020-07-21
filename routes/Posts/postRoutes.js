@@ -69,12 +69,18 @@ router.get('/test', (req, res) => {
 });
 router.get('/edit-post/:id', (req, res) => {
   if (req.isAuthenticated()) {
-    Post.find({ _id: req.params.id }).then((foundPost) => {
-      res.render('editPost', { foundPost });
+    Post.findOne({ _id: req.params.id }).then((foundPost) => {
+      console.log(req.user._id)
+      console.log(foundPost.owner)
+      if(req.user._id === foundPost.owner){
+
+        return res.render('editPost', { foundPost });
+      }
+      res.send('You not the owner')
     });
   }
 });
-router.post('/edit-post/:id', (req, res, next) => {
+router.put('/edit-post/:id', (req, res, next) => {
   if (!req.isAuthenticated()) {
     return res.send('unauthorized');
   } else {

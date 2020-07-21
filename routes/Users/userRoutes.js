@@ -65,7 +65,7 @@ router.get('/profile', (req, res, next) => {
   return res.send('Unauthorized');
 });
 
-router.post('/update-profile', (req, res, next) => {
+router.put('/update-profile', (req, res, next) => {
   updateProfile(req.body, req.user._id)
     .then(() => {
       return res.redirect(301, '/api/users/profile');
@@ -74,7 +74,7 @@ router.post('/update-profile', (req, res, next) => {
 });
 
 
-router.post('/update-password', checkPassword, async (req, res, next) => {
+router.put('/update-password', checkPassword, async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty())
     return res.status(422).json({ errors: errors.array() });
