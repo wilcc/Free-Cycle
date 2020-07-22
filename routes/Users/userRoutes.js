@@ -10,6 +10,7 @@ const {
 
 const { validationResult } = require('express-validator');
 const { register,updateProfile,updatePassword,logout } = require('./controller/controller');
+const User = require('./models/User');
 
 /* GET users listing. */
 router.get('/', function (req, res) {
@@ -57,7 +58,13 @@ router.get('/update-profile', (req, res) => {
   }
   return res.send('Unauthorized');
 });
-
+router.get('/view-profile/:id',(req,res,next)=>{
+  if(req.isAuthenticated()){
+    User.findOne({_id:req.params.id}).then((foundUser)=>{
+      return res.render('viewProfile',{foundUser})
+    })
+  }
+})
 router.get('/profile', (req, res, next) => {
   if (req.isAuthenticated()) {
     return res.render('profile');

@@ -27,10 +27,11 @@
                 href="/api/posts/get-all"
                   data-target="#blogCarousel"
                   data-slide-to="0"
+                  class="active"
                 ></li>
               <% }else{ %>
                 <li data-target="#blogCarousel" data-slide-to="1">
-                  <a href="/api/posts/get-all/page/<%= j %>">test</a>
+                  <a href=/api/posts/get-all/pages/<%= j %>">test</a>
                 </li>
               <%}}%>
                 
@@ -69,7 +70,7 @@
                                         style="padding: px 15px;"
                                         >
                                         <p>
-                                            <i class="fa fa-user-o"></i> <%= foundPost[i].owner.profile.name%> 
+                                            <i class="fa fa-user-o"></i><a href="/api/users/view-profile/<%= foundPost[i].owner._id %> "><%= foundPost[i].owner.profile.name%></a>  
                                             <i class="fa fa-comments-o"></i> Comments[<%= foundPost[i].comments.length %>]
                                         </p>
                                     </div>
