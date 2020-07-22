@@ -79,11 +79,11 @@ module.exports = {
     }
   },
   createNewPost: (req, res, next) => {
-    console.log(req);
+
     const post = new Post();
     post.owner = req.user._id;
     post.text = req.body.text;
-    post.image = req.body.image;
+    post.image = ['/images/1.jpg'],
     post.category = req.body.category;
     post.title = req.body.title;
     post

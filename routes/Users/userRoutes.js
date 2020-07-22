@@ -24,7 +24,7 @@ router.get('/logged', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  console.log(req)
+
   if (req.isAuthenticated()) {
     return res.redirect('/');
   }

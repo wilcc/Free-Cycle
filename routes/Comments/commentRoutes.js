@@ -20,7 +20,7 @@ router.post('/add-comment/:id',(req,res,next)=>{
             foundPost.comments.push(comment._id)
             foundPost.save()
             .then((post)=>{
-                console.log(post.timestamp)
+
                 res.redirect(`/api/posts/single-post/${foundPost._id}`)
                 // res.json({word,comment})
             })

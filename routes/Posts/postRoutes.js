@@ -22,10 +22,16 @@ const {
 } = require('./controller/controller');
 
 
-router.post('/picture',upload.array('photo', 12),(req,res)=>{
-  console.log(req)
+router.post('/picture/:id',upload.array('photo', 12),(req,res)=>{
+  Post.findOne({_id:req.params.id}).then((foundPost)=>{
+    for(let i = 0;i<req.files.length;i++){
+      foundPost.image.push(req.files[i].path.slice(6))
+    }foundPost.save().then((saved)=>{
+      res.send(saved)
+    })
+  })
 
-  res.send('uploaded')
+
 })
 
 router.get('/create-new', (req, res) => {
