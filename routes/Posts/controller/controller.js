@@ -1,6 +1,9 @@
 const Post = require('../models/Post');
 const Comment = require('../../Comments/model/Comments');
 
+
+
+
 module.exports = {
   deletePost: (req, res, next) => {
     Post.findOne({ _id: req.params.id })

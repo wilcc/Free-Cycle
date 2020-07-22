@@ -59,6 +59,12 @@
           <input class="submit-btn" type="submit" value="Submit" />
         </div>
       </form>
+      <form action="/api/posts/picture" method="post" enctype="multipart/form-data">
+        <input type="file" name="photo" multiple/>
+        <div class="form-field col-lg-12">
+          <input class="submit-btn" type="submit" value="Submit" />
+        </div>
+      </form>
     </section>
 
     <% include ./partials/scripts %>
