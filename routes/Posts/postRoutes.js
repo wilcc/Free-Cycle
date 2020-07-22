@@ -20,7 +20,7 @@ const {
   getCategory,
   createNewPost,
 } = require('./controller/controller');
-
+const {paginate}= require('./middleware/paginate')
 
 router.post('/picture/:id',upload.array('photo', 12),(req,res)=>{
   Post.findOne({_id:req.params.id}).then((foundPost)=>{
@@ -41,15 +41,21 @@ router.get('/create-new', (req, res) => {
   return res.send('unauthorized');
 });
 router.post('/create-new', createNewPost);
+router.get('/get-all',(req,res,next)=>{
+  return paginate(req,res,next)
+})
+router.get('/get-all/page/:pageNumber',(req, res, next) => {
+  return paginate(req, res, next);
+})
 
-router.get('/get-all', (req, res, next) => {
-  Post.find()
-    .populate('owner')
-    .exec((err, foundPost) => {
-      if (err) return next(err);
-      return res.render('main/allPost', { foundPost });
-    });
-});
+// router.get('/get-all', (req, res, next) => {
+//   Post.find()
+//     .populate('owner')
+//     .exec((err, foundPost) => {
+//       if (err) return next(err);
+//       return res.render('main/allPost', { foundPost });
+//     });
+// });
 
 router.get('/single-post/:id', getSinglePost);
 router.get('/get-category/:category', getCategory);

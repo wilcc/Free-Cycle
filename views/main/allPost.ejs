@@ -22,12 +22,18 @@
               data-ride="carousel"
             >
               <ol class="carousel-indicators">
+              <% for( let j = 1; j <=pages; j++ ) {if(j===1) {%>
                 <li
+                href="/api/posts/get-all"
                   data-target="#blogCarousel"
                   data-slide-to="0"
-                  class="active"
                 ></li>
-                <li data-target="#blogCarousel" data-slide-to="1"></li>
+              <% }else{ %>
+                <li data-target="#blogCarousel" data-slide-to="1">
+                  <a href="/api/posts/get-all/page/<%= j %>">test</a>
+                </li>
+              <%}}%>
+                
               </ol>
               
               <!-- Carousel items -->
