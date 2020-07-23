@@ -30,8 +30,6 @@ router.post('/picture/:id',upload.array('photo', 12),(req,res)=>{
       res.send(saved)
     })
   })
-
-
 })
 
 router.get('/create-new', (req, res) => {
@@ -48,14 +46,14 @@ router.get('/get-all/page/:pageNumber',(req, res, next) => {
   return paginate(req, res, next);
 })
 
-// router.get('/get-all', (req, res, next) => {
-//   Post.find()
-//     .populate('owner')
-//     .exec((err, foundPost) => {
-//       if (err) return next(err);
-//       return res.render('main/allPost', { foundPost });
-//     });
-// });
+router.get('/getall', (req, res, next) => {
+  Post.find()
+    .populate('owner')
+    .exec((err, foundPost) => {
+      if (err) return next(err);
+      return res.render('tete', { foundPost });
+    });
+});
 
 router.get('/single-post/:id', getSinglePost);
 router.get('/get-category/:category', getCategory);

@@ -577,11 +577,11 @@ body {
 .profile-stat:after {
   color: #999;
 }
-.works::after {
-  content: "works";
+.posts::after {
+  content: "posts";
 }
 .followers::after {
-  content: "followers";
+  content: "comments";
 }
 .following::after {
   content: "following";

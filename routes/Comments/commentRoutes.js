@@ -16,12 +16,12 @@ router.post('/add-comment/:id',(req,res,next)=>{
         newComment.originalPost = foundPost._id
         newComment.owner.name = req.user.profile.name
         newComment.owner.id = req.user._id
-
         newComment.save().then((comment)=>{
             foundPost.comments.push(comment._id)
             foundPost.save()
             .then((post)=>{
-
+                req.user.comment.push(comment._id)
+                req.user.save()
                 res.redirect(`/api/posts/single-post/${foundPost._id}`)
                 // res.json({word,comment})
             })
