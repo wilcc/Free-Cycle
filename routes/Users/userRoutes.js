@@ -11,6 +11,7 @@ const {
 const { validationResult } = require('express-validator');
 const { register,updateProfile,updatePassword,logout } = require('./controller/controller');
 const User = require('./models/User');
+const Post = require('../Posts/models/Post');
 
 /* GET users listing. */
 router.get('/', function (req, res) {
@@ -61,7 +62,10 @@ router.get('/update-profile', (req, res) => {
 router.get('/view-profile/:id',(req,res,next)=>{
   if(req.isAuthenticated()){
     User.findOne({_id:req.params.id}).then((foundUser)=>{
-      return res.render('viewProfile',{foundUser})
+      Post.find({owner:foundUser._id}).then((foundPosts)=>{
+
+        return res.render('viewProfile',{foundUser,foundPosts})
+      })
     })
   }
 })

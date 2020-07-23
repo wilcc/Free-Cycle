@@ -90,7 +90,22 @@
         </div>
       </div>
       <div class="rela-block content">
-        
+          <% console.log(foundPosts[0]._id) %> 
+        <% for( let i = 0; i < foundPosts.length; i++ ) { %>
+            <div>
+                <a href="/api/posts/single-post/<%= foundPosts[i]._id%>">
+                <%= foundPosts[i].title %> 
+                </a>
+            </div>
+            <div>
+                <%= foundPosts[i].timestamp %> 
+            </div>
+            <div>
+                Comments[
+                <%= foundPosts[i].comments.length %> 
+                ]
+            </div>
+        <% } %>
       </div>
       
     </div>
