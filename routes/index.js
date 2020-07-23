@@ -5,5 +5,7 @@ const router = express.Router();
 router.get('/', function(req, res) {
   res.render('landing');
 });
-
+router.get('/unauthorized',(req,res)=>{
+  res.render('unauthorized')
+})
 module.exports = router;

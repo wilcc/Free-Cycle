@@ -57,7 +57,7 @@ router.get('/update-profile', (req, res) => {
   if (req.isAuthenticated()) {
     return res.render('update-profile');
   }
-  return res.send('Unauthorized');
+  return res.redirect('/unauthorized');
 });
 router.get('/view-profile/:id',(req,res,next)=>{
   if(req.isAuthenticated()){
@@ -73,7 +73,7 @@ router.get('/profile', (req, res, next) => {
   if (req.isAuthenticated()) {
     return res.render('profile');
   }
-  return res.send('Unauthorized');
+  return res.redirect('/unauthorized');
 });
 
 router.put('/update-profile', (req, res, next) => {

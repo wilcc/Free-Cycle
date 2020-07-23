@@ -36,7 +36,7 @@ router.get('/create-new', (req, res) => {
   if (req.isAuthenticated()) {
     return res.render('createNewPost');
   }
-  return res.send('unauthorized');
+  return res.redirect('/unauthorized');
 });
 router.post('/create-new', createNewPost);
 router.get('/get-all',(req,res,next)=>{
