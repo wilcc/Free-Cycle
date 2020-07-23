@@ -1,135 +1,86 @@
-<nav class="navbar navbar-default navbar-inverse" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button
-        type="button"
-        class="navbar-toggle collapsed"
-        data-toggle="collapse"
-        data-target="#bs-example-navbar-collapse-1"
-      >
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+<div class="nav-bar navbar-expand-md mb-4" role="navigation">
+  <div class="horz-center nav-container">
+    <div class="floated logo">Free Cycle</div>
+    <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarCollapse"
+    aria-controls="navbarCollapse"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
 
-      <a class="navbar-brand" href="#">Login dropdown</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-            >Dropdown <span class="caret"></span
-          ></a>
-          <ul>
-            <% for( let i = 0; i < categories.length; i++ ) { %>
-            <li style="list-style: none;">
-              <a
-                href="/api/products/all-products/<%=categories[i]._id%>"
-                class="nav-category-list"
-                style="color: black; text-decoration: none;"
-              >
-                <%= categories[i].name %>
-              </a>
-            </li>
+    <ul class="floated nav-div nav-links navbar-nav mr-auto">
+      <li class="rela-inline">Home</li>
+      <li class="nav-item dropdown rela-inline">
+        <a
+          class="nav-link dropdown-toggle"
+          id="dropdown2"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          >Categories</a
+        >
+        
+        <ul class="dropdown-menu" aria-labelledby="dropdown2">
+          <% for( let i = 0; i < categories.length; i++ ) { %>
+            <li class="dropdown-item" href="#"><a href="/api/posts/get-category/<%= categories[i].name %> "> <%= categories[i].name %> </a></li>
             <% } %>
-          </ul>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search" />
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <% if (!user) { %>
 
-      <ul class="nav navbar-nav navbar-right">
-        <li><p class="navbar-text">Already have an account?</p></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-            ><b>Login</b> <span class="caret"></span
-          ></a>
-          <ul id="login-dp" class="dropdown-menu">
-            <li>
-              <div class="row">
-                <div class="col-md-12">
-                  Login via
-                  <form
-                    class="form"
-                    role="form"
-                    action="/api/users/login"
-                    method="post"
-                    accept-charset="ßUTF-8"
-                    id="login-nav"
-                  >
-                    <div class="form-group">
-                      <label class="sr-only" for="email">Email address</label>
-                      <input
-                        type="email"
-                        class="form-control"
-                        id="email"
-                        placeholder="Email address"
-                        name="email"
-                        required
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label class="sr-only" for="password">Password</label>
-                      <input
-                        type="password"
-                        class="form-control"
-                        id="password"
-                        name="password"
-                        placeholder="Password"
-                        required
-                      />
-                      <div class="help-block text-right">
-                        <a href="">Forget the password ?</a>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <button type="submit" class="btn btn-primary btn-block">
-                        Sign in
-                      </button>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox" /> keep me logged-in
-                      </label>
-                    </div>
-                  </form>
-                </div>
-                <div class="bottom text-center">
-                  New here ? <a href="/api/users/register"><b>Join Us</b></a>
-                </div>
-              </div>
-            </li>
-          </ul>
-          <% } else {%>
-          <ul class="nav navbar-nav navbar-right">
-            <span class="navbar-text">
-              Hello &nbsp;
-              <a href="/api/users/profile">
-                <%= user.profile.name.toUpperCase()%>
-              </a>
-              &nbsp;|&nbsp;
-            </span>
-
-            <span class="nav navbar-nav navbar-text"
-              ><a href="/api/users/logout">Logout</a></span
-            >
-          </ul>
-          <% } %>
-        </li>
-      </ul>
+        </ul>
+      </li>
+      <li class="nav-item rela-inline">
+        <a
+          class="nav-link"
+          href="/api/posts/create-new"
+          >Create New Post</a
+        >
+      </li>
+      <li class="rela-inline">Community</li>
+      <li class="rela-inline">Jobs</li>
+    </ul>
+    <ul class="floated nav-div">
+      <li class="rela-inline menu-toggle">•••</li>
+    </ul>
+    <div class="floated right nav-div search-container">
+      <div class="rela-inline icon search-icon"></div>
+      <input
+        type="text"
+        placeholder="Search"
+        class="rela-inline nav-search"
+      />
     </div>
-    <!-- /.navbar-collapse -->
+    <ul class="floated right nav-div sign-div">
+      <li class="rela-inline">Sign-Up</li>
+      <li class="rela-inline">Sign-In</li>
+    </ul>
+    <div class="menu-card">
+      <div class="abs-center menu-background"></div>
+      <div class="menu-content">
+        <ul class="menu-links sub-nav-links">
+          <li class="rela-block">Shots</li>
+          <li class="rela-block">Designers</li>
+          <li class="rela-block">Teams</li>
+          <li class="rela-block">Community</li>
+          <li class="rela-block">Jobs</li>
+        </ul>
+        <ul class="menu-links">
+          <li class="rela-block">About</li>
+          <li class="rela-block">Shop</li>
+          <li class="rela-block">Support</li>
+          <li class="rela-block">Tags</li>
+          <li class="rela-block">Contact</li>
+        </ul>
+        <ul class="menu-links sign-links">
+          <li class="rela-block">Sign-Up</li>
+          <li class="rela-block">Sign-In</li>
+        </ul>
+      </div>
+      </div>
+    </div>
   </div>
-  <!-- /.container-fluid -->
-</nav>
+</div>

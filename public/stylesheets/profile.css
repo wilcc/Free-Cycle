@@ -430,7 +430,7 @@
     content: "posts";
   }
   .followers::after {
-    content: "followers";
+    content: "comments";
   }
   .following::after {
     content: "following";

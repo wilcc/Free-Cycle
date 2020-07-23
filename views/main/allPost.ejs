@@ -8,6 +8,10 @@
           position:relative;
           z-index:999;
         }
+        .name{
+          position:relative;
+          z-index:888
+        }
       </style>
   </head>
   <body>
@@ -70,7 +74,7 @@
                                         style="padding: px 15px;"
                                         >
                                         <p>
-                                            <i class="fa fa-user-o"></i><a href="/api/users/view-profile/<%= foundPost[i].owner._id %> "><%= foundPost[i].owner.profile.name%></a>  
+                                            <i class="fa fa-user-o "></i><a class ="name" href="/api/users/view-profile/<%= foundPost[i].owner._id %> "><%= foundPost[i].owner.profile.name%></a>  
                                             <i class="fa fa-comments-o"></i> Comments[<%= foundPost[i].comments.length %>]
                                         </p>
                                     </div>
