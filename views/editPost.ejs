@@ -59,10 +59,16 @@
           <input class="submit-btn" type="submit" value="Submit" />
         </div>
       </form>
-      <form action="/api/posts/picture/<%= foundPost._id %> " method="post" enctype="multipart/form-data">
-        <input type="file" name="photo" multiple/>
-        <div class="form-field col-lg-12">
-          <input class="submit-btn" type="submit" value="Submit" />
+        <form action="/api/posts/picture/<%= foundPost._id %> " method="post" class="contact-form row" enctype="multipart/form-data">
+          <div class="input-group">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile04"name="photo" multiple>
+              <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+            </div>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="submit">Button</button>
+            </div>
+          </div>
         </div>
       </form>
     </section>

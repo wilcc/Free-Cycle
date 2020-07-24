@@ -27,7 +27,7 @@ router.post('/picture/:id',upload.array('photo', 12),(req,res)=>{
     for(let i = 0;i<req.files.length;i++){
       foundPost.image.push(req.files[i].path.slice(6))
     }foundPost.save().then((saved)=>{
-      res.send(saved)
+      res.redirect(`/api/posts/single-post/${req.params.id}`)
     })
   })
 })
@@ -68,6 +68,7 @@ router.get('/edit-post/:id', (req, res) => {
   }
 });
 router.put('/edit-post/:id', editPost);
-router.delete('/single-post/:id', deletePost);
+
+router.delete('/single-post/:id',deletePost);
 
 module.exports = router;

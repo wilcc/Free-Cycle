@@ -1,8 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Project For Code Immersives</title>
+    <title>Free-Cycle</title>
     <% include ./partials/head %>
+    <style>
+        .mt{
+          position:relative;
+          z-index:999;
+        }
+        .name{
+          position:relative;
+          z-index:888
+        }
+      </style>
   </head>
   <body>
     <% include ./partials/newnavbar %>
@@ -27,6 +37,7 @@
               <div class="carousel-inner">
                 <div class="carousel-item active">
                   <div class="row">
+                    <% if (foundPost.length > 6) { %>
                     <% for( let i = 0; i < 6; i++ ) { %>
                     <div class="col-md-4">
                       <div class="item-box-blog">
@@ -146,6 +157,66 @@
                               </div>
                               <% } %>
                   </div>
+                  <% } else{%>
+                    <% for( let i = 0; i < foundPost.length; i++ ) { %>
+                        <div class="col-md-4">
+                            <div class="item-box-blog">
+                              <div class="item-box-blog-image">
+                                <!--Date-->
+                                <div class="item-box-blog-date bg-blue-ui white">
+                                  <span class="mon"
+                                    ><%= foundPost[i].timestamp %>
+                                  </span>
+                                </div>
+                                <!--Image-->
+                                <figure>
+                                  <img alt="" src="<%= foundPost[i].image[0] %> " />
+                                </figure>
+                              </div>
+                              <div class="item-box-blog-body">
+                                <!--Heading-->
+                                <div class="item-box-blog-heading">
+                                  <a href="#" tabindex="0">
+                                    <h5><%= foundPost[i].title %></h5>
+                                  </a>
+                                </div>
+                                <!--Data-->
+                                <div
+                                  class="item-box-blog-data"
+                                  style="padding: px 15px;"
+                                >
+                                  <p>
+                                    <i class="fa fa-user-o"></i
+                                    ><a
+                                      class="name"
+                                      href="/api/users/view-profile/<%= foundPost[i].owner._id %> "
+                                      ><%= foundPost[i].owner.profile.name%></a
+                                    >
+                                    <i class="fa fa-comments-o"></i> Comments[<%=
+                                    foundPost[i].comments.length %>]
+                                  </p>
+                                </div>
+                                <!--Text-->
+                                <div class="item-box-blog-text">
+                                  <p>
+                                    <%= foundPost[i].text %>
+                                  </p>
+                                </div>
+                                <div class="mt">
+                                  <a
+                                    href="/api/posts/single-post/<%= foundPost[i]._id %>"
+                                    tabindex="0"
+                                    class="btn bg-blue-ui white read"
+                                    >read more</a
+                                  >
+                                </div>
+                                <!--Read More Button-->
+                              </div>
+                            </div>
+                          </div>
+                          <% } %>
+                          <% } %>
+
                   <!--.row-->
                 </div>
                 <!--.item-->

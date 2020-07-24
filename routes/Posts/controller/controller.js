@@ -70,7 +70,7 @@ module.exports = {
           if (err) {
             return next(err);
           } else {
-            return res.render('main/allPost', { foundPost });
+            return res.render('tete', { foundPost });
           }
         });
     }
