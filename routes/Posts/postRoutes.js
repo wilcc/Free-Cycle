@@ -39,19 +39,19 @@ router.get('/create-new', (req, res) => {
   return res.redirect('/unauthorized');
 });
 router.post('/create-new', createNewPost);
-router.get('/get-all',(req,res,next)=>{
+router.get('/getall',(req,res,next)=>{
   return paginate(req,res,next)
 })
 router.get('/get-all/page/:pageNumber',(req, res, next) => {
   return paginate(req, res, next);
 })
 
-router.get('/getall', (req, res, next) => {
+router.get('/get-all', (req, res, next) => {
   Post.find()
     .populate('owner')
     .exec((err, foundPost) => {
       if (err) return next(err);
-      return res.render('tete', { foundPost });
+      return res.render('tete', {foundPost});
     });
 });
 
@@ -64,7 +64,7 @@ router.get('/edit-post/:id', (req, res) => {
         return res.render('editPost', { foundPost });
       }
       res.send('You not the owner');
-    });
+    }).catch((err)=>console.log(err))
   }
 });
 router.put('/edit-post/:id', editPost);

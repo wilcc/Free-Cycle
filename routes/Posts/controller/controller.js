@@ -1,9 +1,6 @@
 const Post = require('../models/Post');
 const Comment = require('../../Comments/model/Comments');
 
-
-
-
 module.exports = {
   deletePost: (req, res, next) => {
     Post.findOne({ _id: req.params.id })
@@ -79,20 +76,19 @@ module.exports = {
     }
   },
   createNewPost: (req, res, next) => {
-
     const post = new Post();
     post.owner = req.user._id;
     post.text = req.body.text;
-    post.image = ['/images/1.jpg'],
     post.category = req.body.category;
     post.title = req.body.title;
-    post
-      .save()
-      .then((savedPost) => {
-        return res.redirect(`/api/posts/single-post/${savedPost._id}`);
-      })
-      .catch((err) => {
-        next(err);
-      });
+    (post.image = ['/images/1.jpg']),
+      post
+        .save()
+        .then((savedPost) => {
+          return res.redirect(`/api/posts/single-post/${savedPost._id}`);
+        })
+        .catch((err) => {
+          next(err);
+        });
   },
 };
