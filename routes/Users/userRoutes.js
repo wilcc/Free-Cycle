@@ -79,7 +79,8 @@ router.get('/profile', (req, res, next) => {
 router.put('/update-profile', (req, res, next) => {
   updateProfile(req.body, req.user._id)
     .then(() => {
-      return res.redirect(301, '/api/users/profile');
+      req.flash('success','User information updated')
+      return res.redirect('/api/users/profile',);
     })
     .catch((err) => next(err));
 });

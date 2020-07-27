@@ -17,14 +17,24 @@
   <body>
     <% include ./partials/newnavbar %>
     <div class="container cta-100">
+        <% if(success.length>0) {%>
+            <span style="color:green">
+            <%=success%> <%}%></span>
+        
+            <% if (errors.length>0) { %>
+                <span style="color:red">
+                <%=errors %> 
+                <% } %></span>
       <div class="container">
         <div class="row blog">
           <div class="col-md-12">
+              
             <div
               id="blogCarousel"
               class="carousel slide container-blog"
               data-ride="carousel"
             >
+            
               <ol class="carousel-indicators">
                 <li
                   data-target="#blogCarousel"
@@ -37,6 +47,9 @@
               <div class="carousel-inner">
                 <div class="carousel-item active">
                   <div class="row">
+                      <% if (foundPost.length ===0) { %>
+                       <p>w Dont' have any post in this category, you can be the first to post</p>
+                      <% } %>
                     <% if (foundPost.length > 6) { %>
                     <% for( let i = 0; i < 6; i++ ) { %>
                     <div class="col-md-4">
@@ -228,7 +241,8 @@
         </div>
       </div>
     </div>
-
+</div>
+    <% include ./partials/footer %> 
     <% include ./partials/scripts %>
   </body>
 </html>

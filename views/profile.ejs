@@ -14,11 +14,20 @@
       <div class="rela-block profile-card">
         <div class="profile-pic" id="profile_pic"></div>
         <div class="rela-block profile-name-container">
+          <% if(success.length>0) {%>
+            <span style="color:green">
+            <%=success%> <%}%></span>
+        
+            <% if (errors.length>0) { %>
+                <span style="color:red">
+                <%=errors %> 
+                <% } %></span>
           <div class="rela-block user-name" id="user_name"><%= user.profile.name%></div>
           <div class="rela-block user-desc" id="user_description">
             <a href="/api/users/update-profile" class="btn btn-primary btn-lg">Edit</a>
           </div>
         </div>
+        
         <div class="rela-block profile-card-stats">
           <div class="floated profile-stat" id="num_works">Name: <%= user.profile.name %><br /></div>
           <div class="floated profile-stat" id="num_followers">
@@ -37,7 +46,7 @@
       
     </div>
     
-
+    <% include ./partials/footer %> 
     <% include ./partials/scripts %>
   </body>
 </html>

@@ -29,7 +29,8 @@ module.exports = {
               if (err) {
                 return res.send(err);
               }
-              return res.send('Post deleted');
+              req.flash('success','You have deleted your post')
+              return res.redirect('/api/posts/get-all');
             });
           }
         })
