@@ -94,7 +94,7 @@ module.exports = {
       User.findOne({ _id: req.params.id })
         .then((foundUser) => {
           Post.find({ owner: foundUser._id }).then((foundPosts) => {
-            return res.render('viewProfile', { foundUser, foundPosts });
+            return res.render('viewprofile', { foundUser, foundPosts });
           });
         })
         .catch((err) => {
