@@ -28,7 +28,6 @@ const seedFunc = async() => {
 }
 
 mongoose.connect(process.env.MONGODB_URI,{useNewUrlParser:true,useCreateIndex:true,useUnifiedTopology:true},()=>{
-    mongoose.connection.db.dropDatabase()
 }).then(()=>{
 console.log('MongoDB Connection')
 seedFunc()
