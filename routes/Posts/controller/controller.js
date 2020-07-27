@@ -96,7 +96,7 @@ module.exports = {
     post.text = req.body.text;
     post.category = req.body.category;
     post.title = req.body.title;
-    (post.image = ['/images/1.jpg']),
+    (post.image = ['/images/placeholder.jpg']),
       post
         .save()
         .then((savedPost) => {
