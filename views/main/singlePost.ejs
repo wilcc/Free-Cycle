@@ -67,11 +67,12 @@
       >
 
       <form
+      onsubmit="myconfirmation()"
         action = "/api/posts/single-post/<%= foundPost._id %>?_method=DELETE"
         method = "POST"
         tabindex="0"
         >
-        <button onclick="myconfirmation()"class="btn bg-blue-ui white read" type="submit">
+        <button class="btn bg-blue-ui white read" type="submit">
           Delete Post
         </button>
         </form
@@ -228,6 +229,7 @@
     <script>
     function myconfirmation(){
       confirm('are you sure you want to delete this post')
+      
     }</script>
   </body>
 </html>

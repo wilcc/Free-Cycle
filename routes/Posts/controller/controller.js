@@ -1,35 +1,47 @@
 const Post = require('../models/Post');
 const Comment = require('../../Comments/model/Comments');
 
+const myconfirmation = function(){
+  confirm('are you sure you want to delete this post')
+  
+}
 module.exports = {
   deletePost: (req, res, next) => {
-    Post.findOne({ _id: req.params.id })
-      .then((foundPost) => {
-        if (JSON.stringify(req.user._id) !== JSON.stringify(foundPost.owner)) {
-          return res.send('only owner of the post can delete');
-        } else {
-          for (let i = 0; i < foundPost.comments.length; i++) {
-            Comment.deleteOne({ _id: foundPost.comments[i] }, (err) => {
+    if (!req.isAuthenticated()) {
+    return res.redirect('/unauthorized')
+    }
+      else{
+      Post.findOne({ _id: req.params.id })
+        .then((foundPost) => {
+          if (
+            JSON.stringify(req.user._id) !== JSON.stringify(foundPost.owner)
+          ) {
+            return res.send('only owner of the post can delete');
+          } else {
+            for (let i = 0; i < foundPost.comments.length; i++) {
+              Comment.deleteOne({ _id: foundPost.comments[i] }, (err) => {
+                if (err) {
+                  return res.send(err);
+                }
+              });
+            }
+            Post.deleteOne({ _id: req.params.id }, (err) => {
               if (err) {
                 return res.send(err);
               }
+              return res.send('Post deleted');
             });
           }
-          Post.deleteOne({ _id: req.params.id }, (err) => {
-            if (err) {
-              return res.send(err);
-            }
-            return res.send('Post deleted');
-          });
-        }
-      })
-      .catch((err) => {
-        return console.log(err);
-      });
+        })
+        .catch((err) => {
+          return console.log(err);
+        });
+    }
+
   },
   editPost: (req, res, next) => {
     if (!req.isAuthenticated()) {
-      return res.send('unauthorized');
+      return res.redirect('/unauthorized');
     } else {
       Post.findOne({ _id: req.params.id })
         .populate('owner')
@@ -59,7 +71,7 @@ module.exports = {
           }
         });
     } else {
-      return res.send('unauthorized');
+      return res.redirect('/unauthorized');
     }
   },
   getCategory: (req, res, next) => {
@@ -73,6 +85,8 @@ module.exports = {
             return res.render('tete', { foundPost });
           }
         });
+    } else {
+      return res.redirect('/unauthorized');
     }
   },
   createNewPost: (req, res, next) => {
