@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const bcrypt =require('bcryptjs')
+const bcrypt = require('bcryptjs');
 
 module.exports = {
   register: async (req, res, next) => {
@@ -84,9 +84,29 @@ module.exports = {
       path: '/',
       httpOnly: true,
       secure: false,
-      maxAge: null
+      maxAge: null,
     });
     req.session.destroy();
     return res.redirect('/api/users/login');
+  },
+  viewProfile: (req, res) => {
+    if (req.isAuthenticated()) {
+      User.findOne({ _id: req.params.id })
+        .then((foundUser) => {
+          Post.find({ owner: foundUser._id }).then((foundPosts) => {
+            return res.render('viewProfile', { foundUser, foundPosts });
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  },
+  login:(req, res) => {
+
+    if (req.isAuthenticated()) {
+      return res.redirect('/');
+    }
+    return res.render('login');
   }
 };

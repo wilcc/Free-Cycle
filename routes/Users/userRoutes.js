@@ -5,11 +5,11 @@ const {
   registerValidation,
   loginValidation,
   verifyLogin,
-  checkPassword
+  checkPassword,
 } = require('./middleware/userValidation');
 
 const { validationResult } = require('express-validator');
-const { register,updateProfile,updatePassword,logout } = require('./controller/controller');
+const { register,updateProfile,updatePassword,logout,viewProfile,login } = require('./controller/controller')
 const User = require('./models/User');
 const Post = require('../Posts/models/Post');
 
@@ -25,13 +25,7 @@ router.get('/logged', (req, res) => {
   return res.redirect('/');
 });
 
-router.get('/login', (req, res) => {
-
-  if (req.isAuthenticated()) {
-    return res.redirect('/');
-  }
-  return res.render('login');
-});
+router.get('/login', login);
 
 router.get('/register', (req, res) => {
   if (req.isAuthenticated()) {
@@ -59,16 +53,8 @@ router.get('/update-profile', (req, res) => {
   }
   return res.redirect('/unauthorized');
 });
-router.get('/view-profile/:id',(req,res,next)=>{
-  if(req.isAuthenticated()){
-    User.findOne({_id:req.params.id}).then((foundUser)=>{
-      Post.find({owner:foundUser._id}).then((foundPosts)=>{
 
-        return res.render('viewProfile',{foundUser,foundPosts})
-      })
-    })
-  }
-})
+router.get('/view-profile/:id',viewProfile)
 router.get('/profile', (req, res, next) => {
   if (req.isAuthenticated()) {
     return res.render('profile');
