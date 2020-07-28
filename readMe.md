@@ -1,6 +1,6 @@
-Free-Cycle for term-2 midterm project
+## Free-Cycle for term-2 midterm project
 
-[App link on heroku](https://free-cycle.herokuapp.com/)
+# [App link on heroku](https://free-cycle.herokuapp.com/)
 
 - `/` - nothing but a landing page, I like the picture and that`s all
 - `/unauthorized` - when user trying to access pages when they don`t have the access, will be redirected to this page.
