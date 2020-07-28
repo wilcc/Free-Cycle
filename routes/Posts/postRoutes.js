@@ -39,12 +39,6 @@ router.get('/create-new', (req, res) => {
   return res.redirect('/unauthorized');
 });
 router.post('/create-new', createNewPost);
-router.get('/getall',(req,res,next)=>{
-  return paginate(req,res,next)
-})
-router.get('/get-all/page/:pageNumber',(req, res, next) => {
-  return paginate(req, res, next);
-})
 
 router.get('/get-all', (req, res, next) => {
   Post.find()

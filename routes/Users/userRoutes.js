@@ -14,16 +14,6 @@ const User = require('./models/User');
 const Post = require('../Posts/models/Post');
 
 /* GET users listing. */
-router.get('/', function (req, res) {
-  return res.send('respond with a resource');
-});
-
-router.get('/logged', (req, res) => {
-  if (req.isAuthenticated()) {
-    res.redirect('api/posts/get-all');
-  }
-  return res.redirect('/');
-});
 
 router.get('/login', login);
 

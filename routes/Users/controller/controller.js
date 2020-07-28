@@ -90,7 +90,10 @@ module.exports = {
     return res.redirect('/api/users/login');
   },
   viewProfile: (req, res) => {
-    if (req.isAuthenticated()) {
+    if (!req.isAuthenticated()) {
+      req.flash('errors','Please login')
+      res.redirect('/api/posts/get-all')
+    }else{
       User.findOne({ _id: req.params.id })
         .then((foundUser) => {
           Post.find({ owner: foundUser._id }).then((foundPosts) => {
