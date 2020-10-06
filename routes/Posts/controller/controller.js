@@ -30,7 +30,7 @@ module.exports = {
                 return res.send(err);
               }
               req.flash('success','You have deleted your post')
-              return res.redirect('/api/posts/get-all');
+              return res.redirect('/freecycle/posts/get-all');
             });
           }
         })
@@ -54,7 +54,7 @@ module.exports = {
           foundPost.title = req.body.title;
           foundPost.category = req.body.category;
           foundPost.save().then((post) => {
-            res.redirect(`/api/posts/single-post/${post._id}`);
+            res.redirect(`/freecycle/posts/single-post/${post._id}`);
           });
         });
     }
@@ -100,7 +100,7 @@ module.exports = {
       post
         .save()
         .then((savedPost) => {
-          return res.redirect(`/api/posts/single-post/${savedPost._id}`);
+          return res.redirect(`/freecycle/posts/single-post/${savedPost._id}`);
         })
         .catch((err) => {
           next(err);
