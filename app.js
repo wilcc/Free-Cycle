@@ -67,10 +67,10 @@ app.use(
     next()
   })
   
-  app.use('/freecycle', indexRouter);
-  app.use('/freecycle/users', usersRouter);
-  app.use('/freecycle/posts',postRouter)
-  app.use('/freecycle/comments',commentRouter)
+  app.use('/', indexRouter);
+  app.use('/api/users', usersRouter);
+  app.use('/api/posts',postRouter)
+  app.use('/api/comments',commentRouter)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
